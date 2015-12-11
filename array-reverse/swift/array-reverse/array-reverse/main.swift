@@ -17,13 +17,16 @@ func reverseArray(inout theList: Array<Int>) {
   }
 }
 
-if C_ARGC != 3 {
-  println("Usage: ./array-reverse <size> <iterations>")
+let args = [String](Process.arguments)
+let argc = args.count
+
+if argc != 3 {
+  print("Usage: ./array-reverse <size> <iterations>")
   exit(1)
 }
 
-let size = String.fromCString(C_ARGV[1])!.toInt()!
-let iterations = String.fromCString(C_ARGV[2])!.toInt()!
+let size = Int(String.fromCString(args[1])!)!
+let iterations = Int(String.fromCString(args[2])!)!
 
 
 var list = Array<Int>(count: size, repeatedValue: 0)
